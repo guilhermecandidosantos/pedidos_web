@@ -2,25 +2,190 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --base: #ffffff;
+  --foreground: #011A5D;
+  --text-800: #808080;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-base: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --color-text-800: var(--text-800);
+  --animate-input-focus-after: afterFocus 0.3s ease forwards;
+  --animate-input-focus-before: beforeFocus 0.3s ease forwards;
+  --animate-input-focus-out-after: afterFocusOut 0.3s ease forwards;
+  --animate-input-focus-out-before: beforeFocusOut 0.3s ease forwards;
+  --animate-menu-hidden: menuHidden 1s ease forwards;
+  --animate-menu-show: menuShow 0.5s ease forwards;
+  --animate-menu-show-modal: menuShowModal 0.5s ease forwards;
+  --animate-content-extend: contentExtend 1s ease forwards;
+  --animate-content-decrease: contentDecrease 0.6s ease forwards;
+  --animate-scale-up: scaleUpAnimation 0.5s ease forwards;
+  --animate-scale-down: scaleDownAnimation 0.5s ease forwards;
+  --animate-opacity-up: opacityUpAnimation 0.5s ease forwards;
+  --animate-slideDown: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  --animate-slideUp: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+
+  @keyframes afterFocus {
+    0% {
+      width: 0;
+      border-color: transparent;
+    }
+    100% {
+      width: 50%;
+    }
+  }
+
+  @keyframes beforeFocus {
+    0% {
+      left: 50%;
+      width: 0;
+      border-color: transparent;
+    }
+    100% {
+      left: 0;
+      width: 50%;
+    }
+  }
+
+  @keyframes afterFocusOut {
+    0% {
+      width: 50%;
+    }
+    100% {
+      width: 0;
+      border-color: transparent;
+    }
+  }
+
+  @keyframes beforeFocusOut {
+    0% {
+      left: 0;
+      width: 50%;
+    }
+    100% {
+      left: 50%;
+      width: 0;
+      border-color: transparent;
+    }
+  }
+
+  @keyframes menuHidden {
+    0% {
+      left: 0%;
+    }
+    100% {
+      left: -100%;
+    }
+  }
+
+  @keyframes menuShow {
+    0% {
+      left: -100%
+    }
+    100% {
+      left: 0%;
+    }
+  }
+
+  @keyframes menuShowModal {
+    0% {
+      left: -100%
+    }
+    100% {
+      left: 0%;
+    }
+  }
+
+  @keyframes contentExtend {
+    0% {
+      left: 18.75rem;
+      width: calc(100vw-18.75rem);
+    }
+    100% {
+      left: 0;
+      width: 100vw;
+    }
+  }
+
+  @keyframes contentDecrease {
+    0% {
+      left: 0;
+      width: 100vw;
+    }
+    100% {
+      left: 18.75rem;
+      width: calc(100vw-18.75rem);
+    }
+  }
+
+  @keyframes scaleUpAnimation {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scaleDownAnimation {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+
+  @keyframes opacityUpAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      height: var(--radix-accordion-content-height);
+    }
+    100% {
+      height: 0;
+    }
+  }
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
+
+:focus {
+  outline: none;
+}
+
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter, sans-serif;
+}
+
+#withoutArrows::-webkit-inner-spin-button,::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
